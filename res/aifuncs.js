@@ -35,18 +35,18 @@ function dayName(dateStr) {
 function monthName(dateStr) {
 	if(!dateStr) return "";
     var monthNames = new Array(12); 
-    weekday[0]=  "Jan";
-	weekday[1] = "Feb";
-	weekday[2] = "Mar";
-	weekday[3] = "Apr";
-	weekday[4] = "May";
-	weekday[5] = "Jun";
-	weekday[6] = "Jul";
-	weekday[7] = "Aug";
-	weekday[8] = "Sep";
-	weekday[9] = "Oct";
-	weekday[10] = "Nov";
-	weekday[11] = "Dec";
+    monthNames[0]=  "Jan";
+	monthNames[1] = "Feb";
+	monthNames[2] = "Mar";
+	monthNames[3] = "Apr";
+	monthNames[4] = "May";
+	monthNames[5] = "Jun";
+	monthNames[6] = "Jul";
+	monthNames[7] = "Aug";
+	monthNames[8] = "Sep";
+	monthNames[9] = "Oct";
+	monthNames[10] = "Nov";
+	monthNames[11] = "Dec";
 	
     var monthName =monthNames[dateStr.getMonth()];
 	return monthName;
