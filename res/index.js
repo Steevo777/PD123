@@ -63,10 +63,10 @@ $(document).on("pageload", "#mainPage", function(e) {
 		for(var i=0, len=data.length; i<len; i++) {
 			var encrptTitle = CryptoJS.TripleDES.decrypt(data[i].title, scrtPasPhrase);
 			encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
-			var encrptUser = CryptoJS.TripleDES.decrypt(data[i].user, scrtPasPhrase);
-			encrptUser = encrptUser.toString(CryptoJS.enc.Latin1);
-			var encrptBody = CryptoJS.TripleDES.decrypt(data[i].body, scrtPasPhrase);
-			encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
+			//var encrptUser = CryptoJS.TripleDES.decrypt(data[i].user, scrtPasPhrase);
+			//encrptUser = encrptUser.toString(CryptoJS.enc.Latin1);
+			//var encrptBody = CryptoJS.TripleDES.decrypt(data[i].body, scrtPasPhrase);
+			//encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
 			s += "<div data-id='"+data[i].id+"'>" + encrptTitle + "  " + dateFmt(data[i].published) + "</div>";
 		}
 		$("#entryList").html(s);
@@ -92,16 +92,16 @@ $(document).on("pageload", "#mainPage", function(e) {
 $(document).on("pageload", "#entryPage", function(e) {
 
 	pwd.getEntry(Number(e.detail.id), function(ob) {
-		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
-		encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
-		var encrptUser = CryptoJS.TripleDES.decrypt(ob.user, scrtPasPhrase);
-		encrptUser = encrptUser.toString(CryptoJS.enc.Latin1);
-		var encrptBody = CryptoJS.TripleDES.decrypt(ob.body, scrtPasPhrase);
-		encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
-		var content = "<h2>" + encrptTitle + "</h2>";
+		//var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
+		//encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
+		//var encrptUser = CryptoJS.TripleDES.decrypt(ob.user, scrtPasPhrase);
+		//encrptUser = encrptUser.toString(CryptoJS.enc.Latin1);
+		//var encrptBody = CryptoJS.TripleDES.decrypt(ob.body, scrtPasPhrase);
+		//encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
+		var content = "<h2>" + ob.title + "</h2>";
 		content += "Written "+dtFormat(ob.published) + "<br/><br/>";
-		content += "User: "+encrptUser+ "<br/><br/>";
-		content += "PassPhrase: "+encrptBody+ "<br/><br/>";
+		//content += "User: "+encrptUser+ "<br/><br/>";
+		//content += "PassPhrase: "+encrptBody+ "<br/><br/>";
 		$("#entryDisplay").html(content);
 	});
 });
