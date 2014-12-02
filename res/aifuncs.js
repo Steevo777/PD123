@@ -32,7 +32,7 @@ function dayName(dateStr) {
 	return dayName;
 }
 
-function dayName(dateStr) {
+function monthName(dateStr) {
 	if(!dateStr) return "";
     var monthNames = new Array(12); 
     weekday[0]=  "Jan";

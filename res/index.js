@@ -91,8 +91,6 @@ $(document).on("pageload", "#entryPage", function(e) {
 		var content = "<h2>" + ob.title + "</h2>";
 		content += "Written "+dtFormat(ob.published) + "<br/><br/>";
 		content += ob.body;
-		if(ob.image) content += "<img class='imgDisplay' src='" + ob.image + "'>";
-		console.log(ob.image);
 		$("#entryDisplay").html(content);
 	});
 });
@@ -105,7 +103,7 @@ $(document).on("pageload", "#addPage", function(e) {
 		//grab the values
 		var title = $("#entryTitle").val();
 		var body = $("#entryBody").val();
-		var img = $("#entryPicture").val();
+		var img = "";
 		//store!
 		pwd.saveEntry({title:title,body:body,image:img}, function() {
 			pageLoad("main.html");
