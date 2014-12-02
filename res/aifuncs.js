@@ -48,6 +48,6 @@ function dayName(dateStr) {
 	weekday[10] = "Nov";
 	weekday[11] = "Dec";
 	
-    var monthName =monthNames[dateStr.getMonth()]);
+    var monthName =monthNames[dateStr.getMonth()];
 	return monthName;
 }
