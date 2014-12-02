@@ -28,6 +28,7 @@ Pwd.prototype.dbErrorHandler = function(e) {
 //I initialize the database structure
 Pwd.prototype.initDB = function(t) {
 	t.executeSql('create table if not exists pwd(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, user TEXT,body TEXT, image TEXT, published DATE)');
+	t.executeSql("alter table pwd add column user TEXT");
 }
 
 Pwd.prototype.getEntries = function(start,callback) {
