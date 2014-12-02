@@ -63,10 +63,6 @@ $(document).on("pageload", "#mainPage", function(e) {
 		for(var i=0, len=data.length; i<len; i++) {
 			var encrptTitle = CryptoJS.TripleDES.decrypt(data[i].title, scrtPasPhrase);
 			encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
-			//var encrptUser = CryptoJS.TripleDES.decrypt(data[i].user, scrtPasPhrase);
-			//encrptUser = encrptUser.toString(CryptoJS.enc.Latin1);
-			//var encrptBody = CryptoJS.TripleDES.decrypt(data[i].body, scrtPasPhrase);
-			//encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
 			s += "<div data-id='"+data[i].id+"'>" + encrptTitle + "  " + dateFmt(data[i].published) + "</div>";
 		}
 		$("#entryList").html(s);
@@ -103,6 +99,15 @@ $(document).on("pageload", "#entryPage", function(e) {
 		content += "User: "+encrptUser+ "<br/><br/>";
 		content += "PassPhrase: "+encrptBody+ "<br/><br/>";
 		$("#entryDisplay").html(content);
+	});
+	
+	//Listen for entry clicks
+		$("#deleteEntrySubmit").on("touchstart", function(e) {
+		e.preventDefault();
+		pwd.deleteEntry(Number(e.detail.id), function() {
+			pageLoad("main.html");
+		});
+		
 	});
 });
 

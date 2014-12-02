@@ -73,6 +73,17 @@ console.dir(data);
 		}, this.dbErrorHandler);
 }
 
+//Delete entry
+Pwd.prototype.deleteEntry = function(id, callback) {
+	this.db.transaction(
+		function(t) {
+			t.executeSql('delete * from pwd where id=?', [id],
+			function() { 
+				callback();
+			}, this.dbErrorHandler);
+		}, this.dbErrorHandler);
+}
+
 //Utility to convert record sets into array of obs
 Pwd.prototype.fixResults = function(res) {
 	var result = [];
