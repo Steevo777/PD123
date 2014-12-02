@@ -62,7 +62,7 @@ Pwd.prototype.deleteEntry = function(id, callback) {
 	this.db.transaction(
 		function(t) {
 			alert("id: "+id);
-			t.executeSql('delete * from pwd where id=?', [id],
+			t.executeSql('delete from pwd where id=?', [id],
 			function() { 
 				callback();
 			}, this.dbErrorHandler);
