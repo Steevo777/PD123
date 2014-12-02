@@ -61,10 +61,12 @@ Pwd.prototype.getEntry = function(id, callback) {
 Pwd.prototype.saveEntry = function(data, callback) {
 
 var encpTitle = CryptoJS.TripleDES.encrypt(data.title, scrtPasPhrase);
+var encpUser = CryptoJS.TripleDES.encrypt(data.user, scrtPasPhrase);
+var encpBody = CryptoJS.TripleDES.encrypt(data.body, scrtPasPhrase);
 console.dir(data);
 	this.db.transaction(
 		function(t) {
-			t.executeSql('insert into pwd(title,user,body,image,published) values(?,?,?,?,?)', [encpTitle, data.user, data.body, data.image, new Date()],
+			t.executeSql('insert into pwd(title,user,body,image,published) values(?,?,?,?,?)', [encpTitle, encpUser, encpBody, data.image, new Date()],
 			function() { 
 				callback();
 			}, this.dbErrorHandler);
