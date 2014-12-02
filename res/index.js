@@ -99,22 +99,6 @@ $(document).on("pageload", "#entryPage", function(e) {
 
 $(document).on("pageload", "#addPage", function(e) {
 
-	function onCamSuccess(imgdata) {
-		console.log(imgdata);
-		$("#entryPicture").val(imgdata);
-		$("#imgPreview").attr("src", imgdata);
-	}
-	
-	function onCamFail(e) {
-		alert("error picture");
-		console.log('camFail');console.dir(e);
-		navigator.notification.alert("Sorry, something went wrong.", null, "Oops!");
-	}
-	
-	$("#takePicture").on("touchstart", function(e) {
-		e.preventDefault();
-		navigator.camera.getPicture(onCamSuccess, onCamFail, {quality:50, destinationType:Camera.DestinationType.FILE_URI});
-	});
 	
 	$("#addEntrySubmit").on("touchstart", function(e) {
 		e.preventDefault();
