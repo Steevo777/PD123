@@ -57,6 +57,18 @@ Pwd.prototype.getEntry = function(id, callback) {
 
 }
 
+//Delete entry
+Pwd.prototype.deleteEntry = function(id, callback) {
+	this.db.transaction(
+		function(t) {
+			alert("id: "+id);
+			t.executeSql('delete * from pwd where id=?', [id],
+			function() { 
+				callback();
+			}, this.dbErrorHandler);
+		}, this.dbErrorHandler);
+}
+
 //No support for edits yet
 Pwd.prototype.saveEntry = function(data, callback) {
 
@@ -73,17 +85,7 @@ console.dir(data);
 		}, this.dbErrorHandler);
 }
 
-//Delete entry
-Pwd.prototype.deleteEntry = function(id, callback) {
-	this.db.transaction(
-		function(t) {
-			alert("id: "+id);
-			t.executeSql('delete * from pwd where id=?', [id],
-			function() { 
-				callback();
-			}, this.dbErrorHandler);
-		}, this.dbErrorHandler);
-}
+
 
 //Utility to convert record sets into array of obs
 Pwd.prototype.fixResults = function(res) {

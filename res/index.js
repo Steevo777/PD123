@@ -87,6 +87,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 
 $(document).on("pageload", "#entryPage", function(e) {
 
+	var recordID = Number(e.detail.id);
 	pwd.getEntry(Number(e.detail.id), function(ob) {
 		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
 		encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
@@ -101,11 +102,11 @@ $(document).on("pageload", "#entryPage", function(e) {
 		$("#entryDisplay").html(content);
 	});
 	
-	//Listen for entry clicks
+	//Listen for delete clicks
 		$("#deleteEntrySubmit").on("touchstart", function(e) {
 		e.preventDefault();
 		alert("click");
-		pwd.deleteEntry(Number(e.detail.id), function() {
+		pwd.deleteEntry(recordID, function() {
 			pageLoad("main.html");
 		});
 		
