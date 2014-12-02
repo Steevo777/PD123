@@ -104,6 +104,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 	//Listen for entry clicks
 		$("#deleteEntrySubmit").on("touchstart", function(e) {
 		e.preventDefault();
+		alert("click");
 		pwd.deleteEntry(Number(e.detail.id), function() {
 			pageLoad("main.html");
 		});
