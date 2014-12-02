@@ -27,7 +27,7 @@ Pwd.prototype.dbErrorHandler = function(e) {
 
 //I initialize the database structure
 Pwd.prototype.initDB = function(t) {
-	t.executeSql('create table if not exists pwd(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, body TEXT, image TEXT, published DATE)');
+	t.executeSql('create table if not exists pwd(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, user TEXT,body TEXT, image TEXT, published DATE)');
 }
 
 Pwd.prototype.getEntries = function(start,callback) {
@@ -36,7 +36,7 @@ Pwd.prototype.getEntries = function(start,callback) {
 
 	this.db.transaction(
 		function(t) {
-			t.executeSql('select id, title, body, image, published from pwd order by published desc',[],
+			t.executeSql('select id, title, user, body, image, published from pwd order by published desc',[],
 				function(t,results) {
 					callback(that.fixResults(results));
 				},this.dbErrorHandler);
@@ -48,7 +48,7 @@ Pwd.prototype.getEntry = function(id, callback) {
 
 	this.db.transaction(
 		function(t) {
-			t.executeSql('select id, title, body, image, published from pwd where id = ?', [id],
+			t.executeSql('select id, title, user, body, image, published from pwd where id = ?', [id],
 				function(t, results) {
 					callback(that.fixResult(results));
 				}, this.dbErrorHandler);
@@ -63,7 +63,7 @@ var encpTitle = CryptoJS.TripleDES.encrypt(data.title, scrtPasPhrase);
 console.dir(data);
 	this.db.transaction(
 		function(t) {
-			t.executeSql('insert into pwd(title,body,image,published) values(?,?,?,?)', [encpTitle, data.body, data.image, new Date()],
+			t.executeSql('insert into pwd(title,user,body,image,published) values(?,?,?,?)', [encpTitle, data.user, data.body, data.image, new Date()],
 			function() { 
 				callback();
 			}, this.dbErrorHandler);

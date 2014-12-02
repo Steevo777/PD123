@@ -90,6 +90,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 	pwd.getEntry(Number(e.detail.id), function(ob) {
 		var content = "<h2>" + ob.title + "</h2>";
 		content += "Written "+dtFormat(ob.published) + "<br/><br/>";
+		content += ob.user;
 		content += ob.body;
 		$("#entryDisplay").html(content);
 	});
@@ -103,9 +104,10 @@ $(document).on("pageload", "#addPage", function(e) {
 		//grab the values
 		var title = $("#entryTitle").val();
 		var body = $("#entryBody").val();
+		var user = $("#entryUser").val();
 		var img = "";
 		//store!
-		pwd.saveEntry({title:title,body:body,image:img}, function() {
+		pwd.saveEntry({title:title,user:user,body:body,image:img}, function() {
 			pageLoad("main.html");
 		});
 		
