@@ -28,7 +28,7 @@ Pwd.prototype.dbErrorHandler = function(e) {
 //I initialize the database structure
 Pwd.prototype.initDB = function(t) {
 	t.executeSql('create table if not exists pwd(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, user TEXT,body TEXT, image TEXT, published DATE)');
-	t.executeSql("alter table pwd add column user TEXT");
+	
 }
 
 Pwd.prototype.getEntries = function(start,callback) {
@@ -64,7 +64,7 @@ var encpTitle = CryptoJS.TripleDES.encrypt(data.title, scrtPasPhrase);
 console.dir(data);
 	this.db.transaction(
 		function(t) {
-			t.executeSql('insert into pwd(title,user,body,image,published) values(?,?,?,?)', [encpTitle, data.user, data.body, data.image, new Date()],
+			t.executeSql('insert into pwd(title,user,body,image,published) values(?,?,?,?,?)', [encpTitle, data.user, data.body, data.image, new Date()],
 			function() { 
 				callback();
 			}, this.dbErrorHandler);
