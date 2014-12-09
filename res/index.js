@@ -1,5 +1,6 @@
 var pwd;
 var mainView;
+var globalRecordID;
 
 document.addEventListener('deviceready', deviceready, false);
 
@@ -88,7 +89,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 $(document).on("pageload", "#entryPage", function(e) {
 
 	var recordID = Number(e.detail.id);
-	
+	globalRecordID = Number(e.detail.id);
 	pwd.getEntry(Number(e.detail.id), function(ob) {
 		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
 		encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
@@ -127,7 +128,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 
 $(document).on("pageload", "#editPage", function(e) {
 
-	var recordID = Number(e.detail.id);
+	var recordID = globalRecordID;
 	alert("record#" + recordID);
 	pwd.getEntry(Number(e.detail.id), function(ob) {
 		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
