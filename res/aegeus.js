@@ -85,6 +85,23 @@ console.dir(data);
 		}, this.dbErrorHandler);
 }
 
+//Support for edits
+Pwd.prototype.updateEntry = function(data, callback) {
+
+var recordID = data.recordID;
+var encpTitle = CryptoJS.TripleDES.encrypt(data.title, scrtPasPhrase);
+var encpUser = CryptoJS.TripleDES.encrypt(data.user, scrtPasPhrase);
+var encpBody = CryptoJS.TripleDES.encrypt(data.body, scrtPasPhrase);
+console.dir(data);
+	this.db.transaction(
+		function(t) {
+			t.executeSql('update pwd set title = ?,user = ?,body = ?,image = ?,published = ? where id = ?', [encpTitle, encpUser, encpBody, data.image, new Date(), recordID],
+			function() { 
+				callback();
+			}, this.dbErrorHandler);
+		}, this.dbErrorHandler);
+}
+
 
 
 //Utility to convert record sets into array of obs

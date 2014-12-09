@@ -88,6 +88,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 $(document).on("pageload", "#entryPage", function(e) {
 
 	var recordID = Number(e.detail.id);
+	
 	pwd.getEntry(Number(e.detail.id), function(ob) {
 		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
 		encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
@@ -95,7 +96,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 		encrptUser = encrptUser.toString(CryptoJS.enc.Latin1);
 		var encrptBody = CryptoJS.TripleDES.decrypt(ob.body, scrtPasPhrase);
 		encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
-		var content = "<h2>" + ob.title + "</h2>";
+		var content = "<h2>" + encrptTitle + "</h2>";
 		content += "Written "+dtFormat(ob.published) + "<br/><br/>";
 		content += "User: "+encrptUser+ "<br/><br/>";
 		content += "PassPhrase: "+encrptBody+ "<br/><br/>";
@@ -103,15 +104,71 @@ $(document).on("pageload", "#entryPage", function(e) {
 	});
 	
 	//Listen for delete clicks
-		$("#deleteEntrySubmit").on("touchstart", function(e) {
+	$("#deleteEntrySubmit").on("touchstart", function(e) {
 		e.preventDefault();
-		alert("click");
-		pwd.deleteEntry(recordID, function() {
+		if (confirm('Are you sure you want to delete this entry?')) {
+    		pwd.deleteEntry(recordID, function() {
+			pageLoad("main.html");
+			});
+		} else {
+    	// Do nothing!
+		}
+			
+	});
+	
+	//Listen for edit click
+	$("#editSubmit").on("touchstart", function(e) { 
+			e.preventDefault();
+			console.log("edit click");
+			var id = $(this).data("id");
+			pageLoad("edit.html?id="+id);
+	});
+});
+
+$(document).on("pageload", "#editPage", function(e) {
+
+	var recordID = Number(e.detail.id);
+	pwd.getEntry(Number(e.detail.id), function(ob) {
+		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
+		encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
+		var encrptUser = CryptoJS.TripleDES.decrypt(ob.user, scrtPasPhrase);
+		encrptUser = encrptUser.toString(CryptoJS.enc.Latin1);
+		var encrptBody = CryptoJS.TripleDES.decrypt(ob.body, scrtPasPhrase);
+		encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
+		
+		//var content = "<h2>" + encrptTitle + "</h2>";
+		//content += "Written "+dtFormat(ob.published) + "<br/><br/>";
+		//content += "User: "+encrptUser+ "<br/><br/>";
+		//content += "PassPhrase: "+encrptBody+ "<br/><br/>";
+		//$("#entryDisplay").html(content);
+		
+		$("#editTitle").val(encrptTitle); 
+		$("#editBody").val(encrptBody);
+		$("#editUser").val(encrptUser);
+		
+		
+	});
+	
+	//Listen for save clicks
+		$("#editSubmit").on("touchstart", function(e) {
+		e.preventDefault();
+		//grab the values
+		var recordID = Number(e.detail.id);
+		var title = $("#edityTitle").val();
+		var body = $("#editBody").val();
+		var user = $("#editUser").val();
+		var img = "";
+		//store!
+		pwd.updateEntry({title:title,user:user,body:body,image:img,recordID:recordID}, function() {
 			pageLoad("main.html");
 		});
 		
 	});
+		
+	
 });
+
+
 
 $(document).on("pageload", "#addPage", function(e) {
 
@@ -130,6 +187,8 @@ $(document).on("pageload", "#addPage", function(e) {
 		
 	});
 });
+
+
 
 
 function dtFormat(input) {
