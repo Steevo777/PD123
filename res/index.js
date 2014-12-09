@@ -128,6 +128,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 $(document).on("pageload", "#editPage", function(e) {
 
 	var recordID = Number(e.detail.id);
+	alert("record#" + recordID);
 	pwd.getEntry(Number(e.detail.id), function(ob) {
 		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
 		encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
@@ -142,7 +143,7 @@ $(document).on("pageload", "#editPage", function(e) {
 		//content += "PassPhrase: "+encrptBody+ "<br/><br/>";
 		//$("#entryDisplay").html(content);
 		
-		$("#editTitle").val(encrptTitle); 
+		$("#editTitle").val("steve"); 
 		$("#editBody").val(encrptBody);
 		$("#editUser").val(encrptUser);
 		
