@@ -156,7 +156,7 @@ $(document).on("pageload", "#editPage", function(e) {
 		e.preventDefault();
 		//grab the values
 		var recordID = globalRecordID;
-		var title = $("#edityTitle").val();
+		var title = $("#editTitle").val();
 		var body = $("#editBody").val();
 		var user = $("#editUser").val();
 		var img = "";
