@@ -144,7 +144,7 @@ $(document).on("pageload", "#editPage", function(e) {
 		//content += "PassPhrase: "+encrptBody+ "<br/><br/>";
 		//$("#entryDisplay").html(content);
 		
-		$("#editTitle").val("steve"); 
+		$("#editTitle").val(encrptTitle); 
 		$("#editBody").val(encrptBody);
 		$("#editUser").val(encrptUser);
 		
@@ -155,7 +155,7 @@ $(document).on("pageload", "#editPage", function(e) {
 		$("#editSubmit").on("touchstart", function(e) {
 		e.preventDefault();
 		//grab the values
-		var recordID = Number(e.detail.id);
+		var recordID = globalRecordID;
 		var title = $("#edityTitle").val();
 		var body = $("#editBody").val();
 		var user = $("#editUser").val();
