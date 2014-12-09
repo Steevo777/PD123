@@ -97,8 +97,8 @@ $(document).on("pageload", "#entryPage", function(e) {
 		var encrptBody = CryptoJS.TripleDES.decrypt(ob.body, scrtPasPhrase);
 		encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
 		var content = "<h2>" + encrptTitle + "</h2>";
-		content += "Written "+dtFormat(ob.published) + "<br/><br/>";
-		content += "User: "+encrptUser+ "<br/><br/>";
+		content += "Saved "+dtFormat(ob.published) + "<br/><br/>";
+		content += "User      : "+encrptUser+ "<br/><br/>";
 		content += "PassPhrase: "+encrptBody+ "<br/><br/>";
 		$("#entryDisplay").html(content);
 	});
@@ -117,7 +117,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 	});
 	
 	//Listen for edit click
-	$("#editSubmit").on("touchstart", function(e) { 
+	$("#editEntrySubmit").on("touchstart", function(e) { 
 			e.preventDefault();
 			console.log("edit click");
 			var id = $(this).data("id");
