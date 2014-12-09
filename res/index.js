@@ -61,6 +61,17 @@ $(document).on("pageload", "#mainPage", function(e) {
 	pwd.getEntries(function(data) {
 		console.log('getEntries');
 		var s = "";
+		
+		data.sort(function(a, b){
+			 var titleA=a.title.toLowerCase(), titleB=b.title.toLowerCase()
+			 if (titleA < titleB) //sort string ascending
+			  return -1 
+			 if (titleA > titleB)
+			  return 1
+			 return 0 //default return value (no sorting)
+			});
+
+
 		for(var i=0, len=data.length; i<len; i++) {
 			var encrptTitle = CryptoJS.TripleDES.decrypt(data[i].title, scrtPasPhrase);
 			encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);

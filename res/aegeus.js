@@ -116,6 +116,7 @@ Pwd.prototype.fixResults = function(res) {
 //I'm a lot like fixResults, but I'm only used in the context of expecting one row, so I return an ob, not an array
 Pwd.prototype.fixResult = function(res) {
 	if(res.rows.length) {
-		return res.rows.item(0);
+			
+			return res.rows.item(0);
 	} else return {};
 }
