@@ -64,10 +64,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 		
 		data.sort(function(a, b){
 			 var titleAu=CryptoJS.TripleDES.decrypt(a.title, scrtPasPhrase), titleBu=CryptoJS.TripleDES.decrypt(b.title, scrtPasPhrase);
-			 
-			 alert(titleAu);
 			 var titleA = titleAu.toString(CryptoJS.enc.Latin1).toLowerCase(),titleB = titleBu.toString(CryptoJS.enc.Latin1).toLowerCase();
-			 alert(titleA);
 			 if (titleA < titleB) //sort string ascending
 			  return -1 
 			 if (titleA > titleB)
