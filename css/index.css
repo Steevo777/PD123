@@ -3,12 +3,12 @@ BODY {
 }
 
 #entryList {
-	width: 100%;
+	width: 90%;
 }
 
 #entryList div {
-	width: 100%;
-	padding: 10px 0px 10px 0px;
+	width: 90%;
+	padding: 10px 30px 10px 0px;
 	margin-bottom: 10px;
 	background-color: #F0F8FF;
 }
