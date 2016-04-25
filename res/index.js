@@ -62,6 +62,8 @@ $(document).on("pageload", "#mainPage", function(e) {
 		console.log('getEntries');
 		var s = "";
 		
+		$("#entryList").html("Decrpyting Information...");
+		
 		data.sort(function(a, b){
 			 var titleAu=CryptoJS.TripleDES.decrypt(a.title, scrtPasPhrase), titleBu=CryptoJS.TripleDES.decrypt(b.title, scrtPasPhrase);
 			 var titleA = titleAu.toString(CryptoJS.enc.Latin1).toLowerCase(),titleB = titleBu.toString(CryptoJS.enc.Latin1).toLowerCase();
@@ -100,6 +102,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 
 $(document).on("pageload", "#entryPage", function(e) {
 
+	$("#entryDisplay").html("Decrytping Information...");
 	var recordID = Number(e.detail.id);
 	globalRecordID = Number(e.detail.id);
 	pwd.getEntry(Number(e.detail.id), function(ob) {

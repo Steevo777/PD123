@@ -15,7 +15,7 @@ Pwd.prototype.setup = function(callback) {
 	this.db = window.openDatabase("Pwd", 1, "Pwd", 1000000);
 	this.db.transaction(this.initDB, this.dbErrorHandler, callback);
 
-}
+};
 
 
 
@@ -23,13 +23,13 @@ Pwd.prototype.setup = function(callback) {
 Pwd.prototype.dbErrorHandler = function(e) {
 	console.log('DB Error');
 	console.dir(e);
-}
+};
 
 //I initialize the database structure
 Pwd.prototype.initDB = function(t) {
 	t.executeSql('create table if not exists pwd(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, user TEXT,body TEXT, image TEXT, published DATE)');
 	
-}
+};
 
 Pwd.prototype.getEntries = function(start,callback) {
 	console.log('Running getEntries');
@@ -43,7 +43,7 @@ Pwd.prototype.getEntries = function(start,callback) {
 				},this.dbErrorHandler);
 		}, this.dbErrorHandler);
 
-}
+};
 
 Pwd.prototype.getEntry = function(id, callback) {
 
@@ -55,7 +55,7 @@ Pwd.prototype.getEntry = function(id, callback) {
 				}, this.dbErrorHandler);
 			}, this.dbErrorHandler);
 
-}
+};
 
 //Delete entry
 Pwd.prototype.deleteEntry = function(id, callback) {
@@ -66,7 +66,7 @@ Pwd.prototype.deleteEntry = function(id, callback) {
 				callback();
 			}, this.dbErrorHandler);
 		}, this.dbErrorHandler);
-}
+};
 
 //No support for edits yet
 Pwd.prototype.saveEntry = function(data, callback) {
@@ -82,7 +82,7 @@ console.dir(data);
 				callback();
 			}, this.dbErrorHandler);
 		}, this.dbErrorHandler);
-}
+};
 
 //Support for edits
 Pwd.prototype.updateEntry = function(data, callback) {
@@ -99,7 +99,7 @@ console.dir(data);
 				callback();
 			}, this.dbErrorHandler);
 		}, this.dbErrorHandler);
-}
+};
 
 
 
@@ -111,7 +111,7 @@ Pwd.prototype.fixResults = function(res) {
 		result.push(row);
 	}
 	return result;
-}
+};
 
 //I'm a lot like fixResults, but I'm only used in the context of expecting one row, so I return an ob, not an array
 Pwd.prototype.fixResult = function(res) {
@@ -119,4 +119,4 @@ Pwd.prototype.fixResult = function(res) {
 			
 			return res.rows.item(0);
 	} else return {};
-}
+};
