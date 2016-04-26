@@ -1,5 +1,5 @@
 BODY {
-	margin: 10px;
+	margin: 5px;
 }
 
 #entryList {
@@ -11,6 +11,8 @@ BODY {
 	padding: 10px 0px 10px 0px;
 	margin-bottom: 10px;
 	background-color: #FFFFFF;
+	
+	;
 }
 
 button {

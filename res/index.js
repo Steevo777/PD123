@@ -10,8 +10,6 @@ function deviceready() {
 	//create a new instance of our Pwd and listen for it to complete it's setup
 	pwd = new Pwd();
 	pwd.setup(startApp);
-
-
 }
 
 /*
@@ -31,8 +29,6 @@ function startApp() {
 		e.preventDefault();
 		pageLoad("main.html");
 	});
-
-
 }
 
 function pageLoad(u) {
@@ -74,12 +70,14 @@ $(document).on("pageload", "#mainPage", function(e) {
 			 return 0 //default return value (no sorting)
 			});
 
-
+		s= "<div class='list-group'>"
 		for(var i=0, len=data.length; i<len; i++) {
 			var encrptTitle = CryptoJS.TripleDES.decrypt(data[i].title, scrtPasPhrase);
 			encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
-			s += "<div data-id='"+data[i].id+"'>" + encrptTitle + "  </div>";
+			s += "<div data-id='"+data[i].id+"' class='list-group-item'> " + encrptTitle + "  </div>";
 		}
+		
+		s += "</div>";
 		$("#entryList").html(s);
 
 		//Listen for add clicks
