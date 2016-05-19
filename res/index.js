@@ -111,7 +111,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 		var encrptBody = CryptoJS.TripleDES.decrypt(ob.body, scrtPasPhrase);
 		encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
 		var content = "<h2>" + encrptTitle + "</h2>";
-		content += "Global Id "+globalRecordID + "<br/><br/>";
+		
 		content += "Saved "+dtFormat(ob.published) + "<br/><br/>";
 		content += "User      : "+encrptUser+ "<br/><br/>";
 		content += "PassPhrase: "+encrptBody+ "<br/><br/>";
