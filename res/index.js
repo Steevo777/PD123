@@ -64,13 +64,13 @@ $(document).on("pageload", "#mainPage", function(e) {
 			 var titleAu=CryptoJS.TripleDES.decrypt(a.title, scrtPasPhrase), titleBu=CryptoJS.TripleDES.decrypt(b.title, scrtPasPhrase);
 			 var titleA = titleAu.toString(CryptoJS.enc.Latin1).toLowerCase(),titleB = titleBu.toString(CryptoJS.enc.Latin1).toLowerCase();
 			 if (titleA < titleB) //sort string ascending
-			  return -1 
+			  return -1; 
 			 if (titleA > titleB)
-			  return 1
-			 return 0 //default return value (no sorting)
+			  return 1;
+			 return 0; //default return value (no sorting)
 			});
 
-		s= "<div class='list-group'>"
+		s= "<div class='list-group'>";
 		for(var i=0, len=data.length; i<len; i++) {
 			var encrptTitle = CryptoJS.TripleDES.decrypt(data[i].title, scrtPasPhrase);
 			encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
@@ -111,6 +111,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 		var encrptBody = CryptoJS.TripleDES.decrypt(ob.body, scrtPasPhrase);
 		encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
 		var content = "<h2>" + encrptTitle + "</h2>";
+		content += "Global Id "+globalRecordID + "<br/><br/>";
 		content += "Saved "+dtFormat(ob.published) + "<br/><br/>";
 		content += "User      : "+encrptUser+ "<br/><br/>";
 		content += "PassPhrase: "+encrptBody+ "<br/><br/>";
