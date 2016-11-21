@@ -141,7 +141,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 
 $(document).on("pageload", "#editPage", function(e) {
 
-	var recordID = globalRecordID;
+	var recordID = Number(e.detail.id);
 	pwd.getEntry(recordID, function(ob) {
 		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
 		encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
