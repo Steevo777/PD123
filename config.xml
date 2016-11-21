@@ -4,9 +4,7 @@
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
-    <author email="callback-dev@incubator.apache.org" href="http://cordova.io">
-        Apache Cordova Team
-    </author>
+    
     <icon height="512" src="res/icon/cordova_512.png" width="512" />
     <icon gap:platform="android" height="96" src="res/icon/cordova_android_96.png" width="96" />
     <icon gap:platform="blackberry" height="80" src="res/icon/cordova_bb_80.png" width="80" />
@@ -30,12 +28,7 @@
     <gap:splash gap:platform="ios" height="640" src="res/screen/iphone_retina_landscape.png" width="960" />
     <gap:splash gap:platform="ios" height="960" src="res/screen/iphone_retina_portrait.png" width="640" />
     <gap:splash gap:platform="winphone" height="800" src="res/screen/windows_phone_portrait.jpg" width="480" />
-    
-    <gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
-	<gap:plugin name="org.apache.cordova.file" version="1.0.1" />
-	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
-	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
-	
+   
     
     <feature name="http://api.phonegap.com/1.0/device" />
     <preference name="phonegap-version" value="3.7.0" />
