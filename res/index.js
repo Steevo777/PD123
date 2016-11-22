@@ -125,7 +125,7 @@ function sendEntries(e) {
 
 		progressBar = "<div class='progress-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100'>";
 		$("#entryList").html(progressBar);
-		for(var i=0, len=data.length; i<len; i++) {
+		/*for(var i=0, len=data.length; i<len; i++) {
 			var encrptTitle = CryptoJS.TripleDES.decrypt(data[i].title, scrtPasPhrase);
 			encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
 			$('.progress-bar').css('width', i+'%').attr('aria-valuenow', i);
@@ -135,7 +135,7 @@ function sendEntries(e) {
 			    data:{ "title": data[i].title, "user": data[i].user, "body": data[i].body, "image":data[i].image , "published":data[i].published, "remoteID":data[i].id  } //This should be an object
 			});
 		
-		}
+		} */
 	
 });
 
