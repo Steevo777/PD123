@@ -18,7 +18,7 @@
 	 {    echo( "<PA>Unable to connect to the database server at this time.</PA>" );
 	     exit();  }
     // Select the database
-    if (! @mysql_select_db("chatdawg") )
+    if (! @mysql_select_db("aegeus") )
 	 {    echo( "<PA>Database is syncing at this time. Try again later. </PA>" );
 	     exit();  }
  	   

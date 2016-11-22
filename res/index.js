@@ -89,7 +89,8 @@ $(document).on("pageload", "#mainPage", function(e) {
 		//Listen for add clicks
 		$("#settingsBtn").on("touchstart", function(e) {
 			e.preventDefault();
-			sendEntries("");
+			$("#entryList").html("Starting Send Information...");
+			sendEntries(e);
 		});
 
 		//Listen for entry clicks
