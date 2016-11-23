@@ -107,38 +107,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 });
 
 function sendEntries(e) {
-	pwd.getEntries(function(data) {
-		console.log('sendEntries');
-		var s = "";
-		
-		$("#entryList").html("Decrpyting Information...");
-		
-		data.sort(function(a, b){
-			 var titleAu=CryptoJS.TripleDES.decrypt(a.title, scrtPasPhrase), titleBu=CryptoJS.TripleDES.decrypt(b.title, scrtPasPhrase);
-			 var titleA = titleAu.toString(CryptoJS.enc.Latin1).toLowerCase(),titleB = titleBu.toString(CryptoJS.enc.Latin1).toLowerCase();
-			 if (titleA < titleB) //sort string ascending
-			  return -1; 
-			 if (titleA > titleB)
-			  return 1;
-			 return 0; //default return value (no sorting)
-			});
-		
-		$("#entryList").html("Send starting...");
-
-		progressBar = "<div class='progress-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100'>";
-		$("#entryList").html(progressBar);
-		for(var i=0, len=data.length; i<len; i++) {
-			var encrptTitle = CryptoJS.TripleDES.decrypt(data[i].title, scrtPasPhrase);
-			encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
-			$('.progress-bar').css('width', i+'%').attr('aria-valuenow', i);
-	    //send the data with ajax
-			$.ajax({type:"POST",url:"http://www.a-information.com/aegeus/psshndlr.php",
-      			dataType:"json",
-			    data:{ "title": data[i].title, "user": data[i].user, "body": data[i].body, "image":data[i].image , "published":data[i].published, "remoteID":data[i].id  } //This should be an object
-			});
-		
-		}  
-	});
+	
 }
 
 
