@@ -91,7 +91,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 
 			$("#entryList").html("Starting Send Information...");
 			e.preventDefault();
-			sendEntries("");
+			//sendEntries("");
 		});
 
 		//Listen for entry clicks
@@ -106,9 +106,9 @@ $(document).on("pageload", "#mainPage", function(e) {
 
 });
 
-function sendEntries(e) {
+/*function sendEntries(e) {
 	
-}
+} */
 
 
 
