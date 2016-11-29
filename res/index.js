@@ -155,7 +155,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 
 $(document).on("pageload", "#editPage", function(e) {
 
-	var recordID = 3; //$(this).data("id"); //Number(e.detail.id);
+	var recordID = Number(e.detail.id); //$(this).data("id"); //Number(e.detail.id);
 	pwd.getEntry(recordID, function(ob) {
 		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
 		encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
@@ -164,11 +164,11 @@ $(document).on("pageload", "#editPage", function(e) {
 		var encrptBody = CryptoJS.TripleDES.decrypt(ob.body, scrtPasPhrase);
 		encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
 		
-		//var content = "<h2>" + encrptTitle + "</h2>";
-		//content += "Written "+dtFormat(ob.published) + "<br/><br/>";
-		//content += "User: "+encrptUser+ "<br/><br/>";
-		//content += "PassPhrase: "+encrptBody+ "<br/><br/>";
-		//$("#entryDisplay").html(content);
+		var content = "<h2>" + encrptTitle + "</h2>";
+		content += "Written "+dtFormat(ob.published) + "<br/><br/>";
+		content += "User: "+encrptUser+ "<br/><br/>";
+		content += "PassPhrase: "+encrptBody+ "<br/><br/>";
+		$("#editDisplay").html(content);
 		
 		$("#editTitle").val(encrptTitle); 
 		$("#editBody").val(encrptBody);
