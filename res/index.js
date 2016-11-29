@@ -115,7 +115,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 $(document).on("pageload", "#entryPage", function(e) {
 
 	$("#entryDisplay").html("Decrytping Information...");
-	var recordID = Number(e.detail.id);
+	var recordID = $(this).data("id"); //Number(e.detail.id);
 	globalRecordID = Number(e.detail.id);
 	pwd.getEntry(Number(e.detail.id), function(ob) {
 		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
