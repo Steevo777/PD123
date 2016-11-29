@@ -148,7 +148,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 	$("#editEntrySubmit").on("touchstart", function(e) { 
 			e.preventDefault();
 			console.log("edit click");
-			var id = 222 ;//$(this).data("id");
+			var id = globalRecordID; //$(this).data("id");
 			pageLoad("edit.html?id="+id);
 	});
 });
