@@ -155,6 +155,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 
 $(document).on("pageload", "#editPage", function(e) {
 
+	$("#editDisplay").html("edit div");
 	var recordID = Number(e.detail.id); //$(this).data("id"); //Number(e.detail.id);
 	pwd.getEntry(recordID, function(ob) {
 		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
