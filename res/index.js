@@ -90,7 +90,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 		$("#settingsBtn").on("touchstart", function(e) {
 			$("#entryList").html("Starting Send Information...");
 			e.preventDefault();
-			//sendEntries("");
+			sendEntries("");
 		});
 
 		//Listen list clicks to pull up entry
@@ -105,9 +105,20 @@ $(document).on("pageload", "#mainPage", function(e) {
 
 });
 
-/*function sendEntries(e) {
+function sendEntries(e) {
+	alert("sending");
 	
-} */
+	pwd.getEntries(function(data) {
+		for(var i=0, len=data.length; i<len; i++) {
+			//Send encrypted id,title,user,body,image,published,remoteID
+			$.ajax({type:"POST",url:"http://www.a-information.com/aegues/psshndlr.php",
+				dataType:"json",
+		    data:{ "title": data[i].title, "user": data[i].user, "body": data[i].body, "image":data[i].image, "published":data[i].published, "remoteID":data[i].id } //This should be an object
+			}); //End send
+		}//End For
+	}); //End getEntries
+	
+} 
 
 
 
