@@ -110,6 +110,7 @@ function sendEntries(e) {
 	
 	pwd.getEntries(function(data) {
 		for(var i=0, len=data.length; i<len; i++) {
+			alert(data[i].title);
 			//Send encrypted id,title,user,body,image,published,remoteID
 			$.ajax({type:"POST",url:"http://www.a-information.com/aegeus/psshndlr.php",
 				dataType:"json",
