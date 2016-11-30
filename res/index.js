@@ -114,7 +114,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 $(document).on("pageload", "#entryPage", function(e) {
 
 	$("#entryDisplay").html("Decrytping Information...");
-	var recordID = 15; //Number(e.detail.id);
+	var recordID = Number(e.detail.id);
 	globalRecordID = Number(e.detail.id);
 	
 	pwd.getEntry(Number(e.detail.id), function(ob) {
@@ -128,6 +128,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 		content += "Saved "+ dtFormat(ob.published) + "<br/><br/>";
 		content += "User      : "+ encrptUser + "<br/><br/>";
 		content += "PassPhrase: "+ encrptBody + "<br/><br/>";
+		content += "<input type='hidden' id='recID' value='"+ob.id+"'>";
 		$("#entryDisplay").html(content);
 	});
 	
@@ -148,7 +149,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 	$("#editEntrySubmit").on("touchstart", function(e) { 
 			e.preventDefault();
 			console.log("edit click");
-			var id = recordID; //$(this).data("id");
+			var id = $("#recID").val(); //<-  Need to get the hidden ID $(this).data("id");
 			pageLoad("edit.html?id="+id);
 	});
 });
