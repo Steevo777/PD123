@@ -114,7 +114,11 @@ function sendEntries(e) {
 			//Send encrypted id,title,user,body,image,published,remoteID
 			$.ajax({type:"POST",url:"http://www.a-information.com/aegeus/psshndlr.php",
 				dataType:"json",
-		    data:{ "title": data[i].title, "user": data[i].user, "body": data[i].body, "image":data[i].image, "published":data[i].published, "remoteID":data[i].id } //This should be an object
+		    data:{ "title": data[i].title, "user": data[i].user, "body": data[i].body, "image":data[i].image, "published":data[i].published, "remoteID":data[i].id }, //This should be an object
+			success: function (data) {
+	            alert(data);
+	            console.log(data)
+	        }
 			}); //End send
 		}//End For
 	}); //End getEntries
