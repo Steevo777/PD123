@@ -114,7 +114,7 @@ $(document).on("pageload", "#mainPage", function(e) {
 $(document).on("pageload", "#entryPage", function(e) {
 
 	$("#entryDisplay").html("Decrytping Information...");
-	var recordID = 222; //Number(e.detail.id);
+	var recordID = 15; //Number(e.detail.id);
 	globalRecordID = Number(e.detail.id);
 	
 	pwd.getEntry(Number(e.detail.id), function(ob) {
