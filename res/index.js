@@ -80,21 +80,20 @@ $(document).on("pageload", "#mainPage", function(e) {
 		s += "</div>";
 		$("#entryList").html(s);
 
-		//Listen for add clicks
+		//Listen for add click
 		$("#addEntryBtn").on("touchstart", function(e) {
 			e.preventDefault();
 			pageLoad("add.html");
 		});
 		
-		//Listen for add clicks
+		//Listen for setting cog click
 		$("#settingsBtn").on("touchstart", function(e) {
-
 			$("#entryList").html("Starting Send Information...");
 			e.preventDefault();
 			//sendEntries("");
 		});
 
-		//Listen for entry clicks
+		//Listen list clicks to pull up entry
 		$("#entryList div").on("touchstart", function(e) { 
 			e.preventDefault();
 			console.log("entry click");
@@ -115,8 +114,9 @@ $(document).on("pageload", "#mainPage", function(e) {
 $(document).on("pageload", "#entryPage", function(e) {
 
 	$("#entryDisplay").html("Decrytping Information...");
-	var recordID = Number(e.detail.id);
+	var recordID = 222; //Number(e.detail.id);
 	globalRecordID = Number(e.detail.id);
+	
 	pwd.getEntry(Number(e.detail.id), function(ob) {
 		var encrptTitle = CryptoJS.TripleDES.decrypt(ob.title, scrtPasPhrase);
 		encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
