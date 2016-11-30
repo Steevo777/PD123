@@ -170,6 +170,7 @@ $(document).on("pageload", "#editPage", function(e) {
 		content += "Written "+dtFormat(ob.published) + "<br/><br/>";
 		content += "User: "+encrptUser+ "<br/><br/>";
 		content += "PassPhrase: "+encrptBody+ "<br/><br/>";
+		content += "<input type='hidden' id='recID' value='"+ob.id+"'>";
 		$("#editDisplay").html(content);
 		
 		$("#editTitle").val(encrptTitle); 
@@ -183,7 +184,7 @@ $(document).on("pageload", "#editPage", function(e) {
 		$("#editSubmit").on("touchstart", function(e) {
 		e.preventDefault();
 		//grab the values
-		var recordID = globalRecordID;
+		var recordID = $("#recID").val(); 
 		var title = $("#editTitle").val();
 		var body = $("#editBody").val();
 		var user = $("#editUser").val();
