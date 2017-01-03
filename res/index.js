@@ -134,7 +134,7 @@ function sendEntries(e) {
 
 function getDataEntries(e) {
 	alert("retrieving");
-	/*
+	
 	//Get from ajax
 	formData = 'usrid=hiker';
 	scrtPasPhrase = "4NemosNautilus";
@@ -147,7 +147,6 @@ function getDataEntries(e) {
 		}).responseText;
 	
 			jsonData = JSON.parse(jsonData);
-			
 			$.each(jsonData, function(i,item){
 				
 				 var encrptTitle = CryptoJS.TripleDES.decrypt(item.title, scrtPasPhrase);
@@ -159,7 +158,7 @@ function getDataEntries(e) {
                  var encrptBody = CryptoJS.TripleDES.decrypt(item.body, scrtPasPhrase);
                  encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
                  
-                 //formDataAssembled = "{title:"+encrptTitle+",user:"+encrptUser+",body:"+encrptBody+",image:"+
+                 //formDataAssembled = "{title:"+encrptTitle+",user:"+encrptUser+",body:"+encrptBody+",image:}";
                  //var recordID = $("#recID").val(); 
          		 var title = encrptTitle;
          		 var body = encrptBody;
@@ -168,7 +167,7 @@ function getDataEntries(e) {
 				 pwd.saveEntry({title:title,user:user,body:body,image:img}, function() {
 						pageLoad("main.html");
 					});//End saveEntry
-				)};//End for each */
+				});//End for each 
 }  //End getEntries
 
 
