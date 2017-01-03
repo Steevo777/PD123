@@ -134,7 +134,7 @@ function sendEntries(e) {
 
 function getDataEntries(e) {
 	alert("retrieving");
-	
+	/*
 	//Get from ajax
 	formData = 'usrid=hiker';
 	scrtPasPhrase = "4NemosNautilus";
@@ -168,7 +168,7 @@ function getDataEntries(e) {
 				 pwd.saveEntry({title:title,user:user,body:body,image:img}, function() {
 						pageLoad("main.html");
 					});//End saveEntry
-				)};//End for each
+				)};//End for each */
 }  //End getEntries
 
 
