@@ -92,13 +92,6 @@ $(document).on("pageload", "#mainPage", function(e) {
 			e.preventDefault();
 			sendEntries("");
 		});
-		
-		//Listen for setting cog click
-		$("#getpwdBtn").on("touchstart", function(e) {
-			$("#entryList").html("Starting Send Information...");
-			e.preventDefault();
-			getDataEntries("");
-		});
 
 		//Listen list clicks to pull up entry
 		$("#entryList div").on("touchstart", function(e) { 
@@ -131,45 +124,6 @@ function sendEntries(e) {
 	}); //End getEntries
 	
 } 
-
-function getDataEntries(e) {
-	alert("retrieving");
-	
-	//Get from ajax
-	formData = 'usrid=hiker';
-	scrtPasPhrase = "4NemosNautilus";
-	var jsonData = $.ajax({
-		url: "http://www.a-information.com/aegeus/jretrpwd.php",
-		type: 'POST',
-		dataType:'json',
-		data: formData,
-		async: false
-		}).responseText;
-	
-			jsonData = JSON.parse(jsonData);
-			
-			$.each(jsonData, function(i,item){
-				
-				 var encrptTitle = CryptoJS.TripleDES.decrypt(item.title, scrtPasPhrase);
-                 encrptTitle = encrptTitle.toString(CryptoJS.enc.Latin1);
-                 
-                 var encrptUser = CryptoJS.TripleDES.decrypt(item.user, scrtPasPhrase);
-                 encrptUser = encrptUser.toString(CryptoJS.enc.Latin1);
-                 
-                 var encrptBody = CryptoJS.TripleDES.decrypt(item.body, scrtPasPhrase);
-                 encrptBody = encrptBody.toString(CryptoJS.enc.Latin1);
-                 
-                 //formDataAssembled = "{title:"+encrptTitle+",user:"+encrptUser+",body:"+encrptBody+",image:"+
-                 //var recordID = $("#recID").val(); 
-         		 var title = encrptTitle;
-         		 var body = encrptBody;
-         		 var user = encrptUser;
-         		 var img = "";
-				 pwd.saveEntry({title:title,user:user,body:body,image:img}, function() {
-						pageLoad("main.html");
-					});//End saveEntry
-				)};//End for each
-}  //End getEntries
 
 
 

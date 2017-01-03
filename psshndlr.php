@@ -10,13 +10,6 @@
   $published = $_POST['published'];
   $remoteID = $_POST['remoteID'];
   
-  $title = "";
-  $user = "";
-  $body = "";
-  $image ="";
-  $published = "";
-  $remoteID = "";
-  
   $date = date('Y-m-d H:i:s'); 
   
   // Connect to the database server 
