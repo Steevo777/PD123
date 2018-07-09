@@ -5,7 +5,7 @@
         An encrypted system
     </description>
     
-    <icon src="res/icon.png" />
+    <icon src="res/cordova.jpg" />
      
    	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
     
