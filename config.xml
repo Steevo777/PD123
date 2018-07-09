@@ -5,8 +5,8 @@
         An encrypted system
     </description>
     
-    
-   
+    <icon src="res/icon.png" />
+     
    	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
     
     
