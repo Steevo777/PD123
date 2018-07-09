@@ -197,7 +197,7 @@ $(document).on("pageload", "#entryPage", function(e) {
 	$("#deleteEntrySubmit").on("touchstart", function(e) {
 		e.preventDefault();
 		if (confirm('Are you sure you want to delete this entry?')) {
-    		pwd.deleteEntry(recordID, function() {
+    		pwd.deleteEntry(Number(e.detail.id), function() {
 			pageLoad("main.html");
 			});
 		} else {
